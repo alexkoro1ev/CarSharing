@@ -1,0 +1,69 @@
+2022-11-09 14:06:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "SUPER" не найден
+Column "SUPER" not found; SQL statement:
+INSERT INTO company (name)VALUES (Super); [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.command.dml.Insert.prepare(Insert.java:327)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at carsharing.controller.menu_actions.ManagerMenu.createCompany(ManagerMenu.java:48)
+	at carsharing.controller.menu_actions.ManagerMenu.execute(ManagerMenu.java:30)
+	at carsharing.controller.Controller.makeAction(Controller.java:34)
+	at carsharing.CarSharing.run(CarSharing.java:17)
+	at carsharing.Main.main(Main.java:10)
+2022-11-09 14:17:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO COMPANY (NAME)VALUES (SUPER COMPANY[*]);"; ожидалось "(, ., [, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO COMPANY (NAME)VALUES (SUPER COMPANY[*]);"; expected "(, ., [, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO company (name)VALUES (Super company); [42001-200]
+2022-11-09 14:23:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Неверное количество столбцов
+Column count does not match; SQL statement:
+INSERT INTO company VALUES ( Sup); [21002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:319)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at carsharing.controller.menu_actions.ManagerMenu.createCompany(ManagerMenu.java:48)
+	at carsharing.controller.menu_actions.ManagerMenu.execute(ManagerMenu.java:31)
+	at carsharing.controller.Controller.makeAction(Controller.java:34)
+	at carsharing.CarSharing.run(CarSharing.java:17)
+	at carsharing.Main.main(Main.java:10)
+2022-11-09 14:23:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "SUP" не найден
+Column "SUP" not found; SQL statement:
+INSERT INTO company (name) VALUES ( Sup); [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.command.dml.Insert.prepare(Insert.java:327)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at carsharing.controller.menu_actions.ManagerMenu.createCompany(ManagerMenu.java:48)
+	at carsharing.controller.menu_actions.ManagerMenu.execute(ManagerMenu.java:31)
+	at carsharing.controller.Controller.makeAction(Controller.java:34)
+	at carsharing.CarSharing.run(CarSharing.java:17)
+	at carsharing.Main.main(Main.java:10)
