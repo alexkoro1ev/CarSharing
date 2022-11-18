@@ -862,6 +862,960 @@ files:
         }
     }
   learner_created: false
+- name: src/carsharing/old/controller/menu_actions/MainMenu.java
+  visible: true
+  text: |
+    package carsharing.controller.menu_actions;
+
+
+    import carsharing.utils.Console;
+    import carsharing.view.View;
+
+    import java.io.IOException;
+
+    public class MainMenu extends Action {
+
+        private final View view;
+        public MainMenu(View view) {
+            super();
+            this.view = view;
+        }
+
+        @Override
+        public void execute() {
+            try {
+                int action = view.showMainMenu();
+                switch (action) {
+                    case 0 -> setState(MenuState.TERMINATE);
+                    case 1 -> setState(MenuState.MANAGER);
+                    default -> Console.writeLine("Wrong command. Choose another one.");
+                }
+            } catch (IOException e) {
+                Console.writeLine("You should enter numbers.");
+            }
+        }
+    }
+  learner_created: true
+- name: src/carsharing/old/controller/menu_actions/CustomerCreatorMenu.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/old/model/Customer.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/old/db/carsharing.trace.db
+  visible: true
+  text: "2022-11-09 14:07:57 jdbc[10]: exception\norg.h2.jdbc.JdbcSQLSyntaxErrorException:\
+    \ Syntax error in SQL statement \"INSERT INTO COMPANY (NAME)VALUES (SUPER COMPANY[*]);\"\
+    ; expected \"(, ., [, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE,\
+    \ REGEXP, IS, IN, BETWEEN, AND, OR, ,, )\"; SQL statement:\nINSERT INTO company\
+    \ (name)VALUES (Super company); [42001-200]\n2022-11-12 09:42:48 jdbc[4]: exception\n\
+    org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop \"COMPANY\" because \"FK_COMPANY\"\
+    \ depends on it; SQL statement:\nDROP TABLE IF EXISTS company [90107-200]\n\t\
+    at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)\n\tat\
+    \ org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\tat org.h2.message.DbException.get(DbException.java:205)\n\
+    \tat org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)\n\tat org.h2.command.ddl.DropTable.update(DropTable.java:124)\n\
+    \tat org.h2.command.CommandContainer.update(CommandContainer.java:198)\n\tat org.h2.command.Command.executeUpdate(Command.java:251)\n\
+    \tat org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)\n\tat org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)\n\
+    \tat carsharing.controller.Controller.newDBCreateQuery(Controller.java:70)\n\t\
+    at carsharing.controller.Controller.createDatabase(Controller.java:61)\n\tat carsharing.controller.Controller.<init>(Controller.java:23)\n\
+    \tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\tat carsharing.Main.main(Main.java:9)\n\
+    \tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\
+    \tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\n2022-11-12 09:42:48 jdbc[9]:\
+    \ exception\norg.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop \"COMPANY\"\
+    \ because \"FK_COMPANY\" depends on it; SQL statement:\nDROP TABLE IF EXISTS company\
+    \ [90107-200]\n\tat org.h2.message.DbException.getJdbcSQLException(DbException.java:576)\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t\
+    at org.h2.message.DbException.get(DbException.java:205)\n\tat org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)\n\
+    \tat org.h2.command.ddl.DropTable.update(DropTable.java:124)\n\tat org.h2.command.CommandContainer.update(CommandContainer.java:198)\n\
+    \tat org.h2.command.Command.executeUpdate(Command.java:251)\n\tat org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)\n\
+    \tat org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)\n\tat carsharing.controller.Controller.newDBCreateQuery(Controller.java:70)\n\
+    \tat carsharing.controller.Controller.createDatabase(Controller.java:61)\n\tat\
+    \ carsharing.controller.Controller.<init>(Controller.java:23)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\n2022-11-12 09:42:49 jdbc[10]:\
+    \ null\norg.h2.message.DbException: The connection was not closed by the application\
+    \ and is garbage collected [90018-200]\n\tat org.h2.message.DbException.get(DbException.java:205)\n\
+    \tat org.h2.message.DbException.get(DbException.java:181)\n\tat org.h2.message.DbException.get(DbException.java:170)\n\
+    \tat org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)\n\tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)\n\
+    \tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)\n\tat org.h2.Driver.connect(Driver.java:69)\n\
+    \tat java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)\n\t\
+    at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:252)\n\tat\
+    \ carsharing.controller.Controller.<init>(Controller.java:25)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\nCaused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException:\
+    \ The connection was not closed by the application and is garbage collected [90018-200]\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:622)\n\t\
+    at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t...\
+    \ 23 more\n2022-11-12 09:42:49 jdbc[10]: null\norg.h2.message.DbException: The\
+    \ connection was not closed by the application and is garbage collected [90018-200]\n\
+    \tat org.h2.message.DbException.get(DbException.java:205)\n\tat org.h2.message.DbException.get(DbException.java:181)\n\
+    \tat org.h2.message.DbException.get(DbException.java:170)\n\tat org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)\n\
+    \tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)\n\tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)\n\
+    \tat org.h2.Driver.connect(Driver.java:69)\n\tat java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)\n\
+    \tat java.sql/java.sql.DriverManager.getConnection(DriverManager.java:252)\n\t\
+    at carsharing.controller.Controller.<init>(Controller.java:25)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\nCaused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException:\
+    \ The connection was not closed by the application and is garbage collected [90018-200]\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:622)\n\t\
+    at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t...\
+    \ 23 more\n2022-11-12 09:45:08 jdbc[4]: exception\norg.h2.jdbc.JdbcSQLSyntaxErrorException:\
+    \ Cannot drop \"COMPANY\" because \"FK_COMPANY\" depends on it; SQL statement:\n\
+    DROP TABLE IF EXISTS company [90107-200]\n\tat org.h2.message.DbException.getJdbcSQLException(DbException.java:576)\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t\
+    at org.h2.message.DbException.get(DbException.java:205)\n\tat org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)\n\
+    \tat org.h2.command.ddl.DropTable.update(DropTable.java:124)\n\tat org.h2.command.CommandContainer.update(CommandContainer.java:198)\n\
+    \tat org.h2.command.Command.executeUpdate(Command.java:251)\n\tat org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)\n\
+    \tat org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)\n\tat carsharing.controller.Controller.newDBCreateQuery(Controller.java:70)\n\
+    \tat carsharing.controller.Controller.createDatabase(Controller.java:61)\n\tat\
+    \ carsharing.controller.Controller.<init>(Controller.java:23)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\n2022-11-12 09:45:09 jdbc[9]:\
+    \ exception\norg.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop \"COMPANY\"\
+    \ because \"FK_COMPANY\" depends on it; SQL statement:\nDROP TABLE IF EXISTS company\
+    \ [90107-200]\n\tat org.h2.message.DbException.getJdbcSQLException(DbException.java:576)\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t\
+    at org.h2.message.DbException.get(DbException.java:205)\n\tat org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)\n\
+    \tat org.h2.command.ddl.DropTable.update(DropTable.java:124)\n\tat org.h2.command.CommandContainer.update(CommandContainer.java:198)\n\
+    \tat org.h2.command.Command.executeUpdate(Command.java:251)\n\tat org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)\n\
+    \tat org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)\n\tat carsharing.controller.Controller.newDBCreateQuery(Controller.java:70)\n\
+    \tat carsharing.controller.Controller.createDatabase(Controller.java:61)\n\tat\
+    \ carsharing.controller.Controller.<init>(Controller.java:23)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\n2022-11-12 09:45:09 jdbc[10]:\
+    \ null\norg.h2.message.DbException: The connection was not closed by the application\
+    \ and is garbage collected [90018-200]\n\tat org.h2.message.DbException.get(DbException.java:205)\n\
+    \tat org.h2.message.DbException.get(DbException.java:181)\n\tat org.h2.message.DbException.get(DbException.java:170)\n\
+    \tat org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)\n\tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)\n\
+    \tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)\n\tat org.h2.Driver.connect(Driver.java:69)\n\
+    \tat java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)\n\t\
+    at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:252)\n\tat\
+    \ carsharing.controller.Controller.<init>(Controller.java:25)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\nCaused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException:\
+    \ The connection was not closed by the application and is garbage collected [90018-200]\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:622)\n\t\
+    at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t...\
+    \ 23 more\n2022-11-12 09:45:09 jdbc[10]: null\norg.h2.message.DbException: The\
+    \ connection was not closed by the application and is garbage collected [90018-200]\n\
+    \tat org.h2.message.DbException.get(DbException.java:205)\n\tat org.h2.message.DbException.get(DbException.java:181)\n\
+    \tat org.h2.message.DbException.get(DbException.java:170)\n\tat org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)\n\
+    \tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)\n\tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)\n\
+    \tat org.h2.Driver.connect(Driver.java:69)\n\tat java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)\n\
+    \tat java.sql/java.sql.DriverManager.getConnection(DriverManager.java:252)\n\t\
+    at carsharing.controller.Controller.<init>(Controller.java:25)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\nCaused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException:\
+    \ The connection was not closed by the application and is garbage collected [90018-200]\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:622)\n\t\
+    at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t...\
+    \ 23 more\n2022-11-12 09:45:09 jdbc[10]: exception\norg.h2.jdbc.JdbcSQLSyntaxErrorException:\
+    \ Syntax error in SQL statement \"INSERT INTO CAR(NAME, COMPANY_ID) VALUES (ANOTHER\
+    \ COMPANY[*], 1);\"; expected \"(, ., [, ::, AT, FORMAT, *, /, %, +, -, ||, ~,\
+    \ !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )\"; SQL statement:\n\
+    INSERT INTO car(name, company_id) VALUES (Another company, 1); [42001-200]\n2022-11-12\
+    \ 09:51:24 jdbc[4]: exception\norg.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot\
+    \ drop \"COMPANY\" because \"FK_COMPANY\" depends on it; SQL statement:\nDROP\
+    \ TABLE IF EXISTS company [90107-200]\n\tat org.h2.message.DbException.getJdbcSQLException(DbException.java:576)\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t\
+    at org.h2.message.DbException.get(DbException.java:205)\n\tat org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)\n\
+    \tat org.h2.command.ddl.DropTable.update(DropTable.java:124)\n\tat org.h2.command.CommandContainer.update(CommandContainer.java:198)\n\
+    \tat org.h2.command.Command.executeUpdate(Command.java:251)\n\tat org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)\n\
+    \tat org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)\n\tat carsharing.controller.Controller.newDBCreateQuery(Controller.java:70)\n\
+    \tat carsharing.controller.Controller.createDatabase(Controller.java:61)\n\tat\
+    \ carsharing.controller.Controller.<init>(Controller.java:23)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\n2022-11-12 09:51:24 jdbc[9]:\
+    \ exception\norg.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop \"COMPANY\"\
+    \ because \"FK_COMPANY\" depends on it; SQL statement:\nDROP TABLE IF EXISTS company\
+    \ [90107-200]\n\tat org.h2.message.DbException.getJdbcSQLException(DbException.java:576)\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t\
+    at org.h2.message.DbException.get(DbException.java:205)\n\tat org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)\n\
+    \tat org.h2.command.ddl.DropTable.update(DropTable.java:124)\n\tat org.h2.command.CommandContainer.update(CommandContainer.java:198)\n\
+    \tat org.h2.command.Command.executeUpdate(Command.java:251)\n\tat org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)\n\
+    \tat org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)\n\tat carsharing.controller.Controller.newDBCreateQuery(Controller.java:70)\n\
+    \tat carsharing.controller.Controller.createDatabase(Controller.java:61)\n\tat\
+    \ carsharing.controller.Controller.<init>(Controller.java:23)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\n2022-11-12 09:51:24 jdbc[10]:\
+    \ null\norg.h2.message.DbException: The connection was not closed by the application\
+    \ and is garbage collected [90018-200]\n\tat org.h2.message.DbException.get(DbException.java:205)\n\
+    \tat org.h2.message.DbException.get(DbException.java:181)\n\tat org.h2.message.DbException.get(DbException.java:170)\n\
+    \tat org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)\n\tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)\n\
+    \tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)\n\tat org.h2.Driver.connect(Driver.java:69)\n\
+    \tat java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)\n\t\
+    at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:252)\n\tat\
+    \ carsharing.controller.Controller.<init>(Controller.java:25)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\nCaused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException:\
+    \ The connection was not closed by the application and is garbage collected [90018-200]\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:622)\n\t\
+    at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t...\
+    \ 23 more\n2022-11-12 09:51:24 jdbc[10]: null\norg.h2.message.DbException: The\
+    \ connection was not closed by the application and is garbage collected [90018-200]\n\
+    \tat org.h2.message.DbException.get(DbException.java:205)\n\tat org.h2.message.DbException.get(DbException.java:181)\n\
+    \tat org.h2.message.DbException.get(DbException.java:170)\n\tat org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)\n\
+    \tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)\n\tat org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)\n\
+    \tat org.h2.Driver.connect(Driver.java:69)\n\tat java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)\n\
+    \tat java.sql/java.sql.DriverManager.getConnection(DriverManager.java:252)\n\t\
+    at carsharing.controller.Controller.<init>(Controller.java:25)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\nCaused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException:\
+    \ The connection was not closed by the application and is garbage collected [90018-200]\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:622)\n\t\
+    at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t...\
+    \ 23 more\n2022-11-12 09:51:24 jdbc[12]: exception\norg.h2.jdbc.JdbcSQLSyntaxErrorException:\
+    \ Cannot drop \"COMPANY\" because \"FK_COMPANY\" depends on it; SQL statement:\n\
+    DROP TABLE IF EXISTS company [90107-200]\n\tat org.h2.message.DbException.getJdbcSQLException(DbException.java:576)\n\
+    \tat org.h2.message.DbException.getJdbcSQLException(DbException.java:429)\n\t\
+    at org.h2.message.DbException.get(DbException.java:205)\n\tat org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)\n\
+    \tat org.h2.command.ddl.DropTable.update(DropTable.java:124)\n\tat org.h2.command.CommandContainer.update(CommandContainer.java:198)\n\
+    \tat org.h2.command.Command.executeUpdate(Command.java:251)\n\tat org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)\n\
+    \tat org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)\n\tat carsharing.controller.Controller.newDBCreateQuery(Controller.java:70)\n\
+    \tat carsharing.controller.Controller.createDatabase(Controller.java:61)\n\tat\
+    \ carsharing.controller.Controller.<init>(Controller.java:23)\n\tat carsharing.CarSharing.<init>(CarSharing.java:12)\n\
+    \tat carsharing.Main.main(Main.java:9)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
+    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)\n"
+  learner_created: true
+- name: src/carsharing/old/db/carsharing
+  visible: true
+  learner_created: true
+- name: src/carsharing/old/controller/menu_actions/MenuState.java
+  visible: true
+  text: |
+    package carsharing.controller.menu_actions;
+
+    public enum MenuState {
+        TERMINATE,
+        MAIN,
+        MANAGER
+    }
+  learner_created: true
+- name: src/carsharing/old/controller/menu_actions/CustomerMenu.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/old/utils/Const.java
+  visible: true
+  text: |
+    package carsharing.utils;
+
+    public class Const {
+        public static final String PATH = "./src/carsharing/db/";
+        public static final String DB_URL = "jdbc:h2:file:" + PATH;
+        public static final String DRIVER = "org.h2.Driver";
+    }
+  learner_created: true
+- name: src/carsharing/old/model/Company.java
+  visible: true
+  text: |
+    package carsharing.model;
+
+    public class Company {
+
+        private int id;
+        private String name;
+
+        public Company(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+  learner_created: true
+- name: src/carsharing/old/model/dao/CompanyDAOImpl.java
+  visible: true
+  text: |
+    package carsharing.model.dao;
+
+    import carsharing.model.Company;
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class CompanyDAOImpl implements CompanyDAO {
+
+        List<Company> companies;
+
+        public CompanyDAOImpl() {
+            this.companies = new ArrayList<>();
+
+        }
+
+        @Override
+        public List<Company> getAllCompanies() {
+            return companies;
+        }
+
+        @Override
+        public Company getCompany(int id) {
+            return companies.get(id);
+        }
+
+        @Override
+        public void updateCompany(Company company) {
+            companies.get(company.getId()).setName(company.getName());
+        }
+
+        @Override
+        public void deleteCompany(Company company) {
+            companies.remove(company.getId());
+        }
+
+        @Override
+        public void addCompany(Company company) {
+            companies.add(company);
+        }
+    }
+  learner_created: true
+- name: src/carsharing/old/model/dao/CompanyDAO.java
+  visible: true
+  text: |
+    package carsharing.model.dao;
+
+    import carsharing.model.Company;
+
+    import java.util.List;
+
+    public interface CompanyDAO {
+        List<Company> getAllCompanies();
+        Company getCompany(int id);
+        void updateCompany(Company company);
+        void deleteCompany(Company company);
+        void addCompany(Company company);
+    }
+  learner_created: true
+- name: src/carsharing/old/view/View.java
+  visible: true
+  text: |
+    package carsharing.view;
+
+    import carsharing.model.Car;
+    import carsharing.model.Company;
+    import carsharing.utils.Console;
+
+    import java.io.IOException;
+    import java.util.List;
+
+    public class View {
+
+        public View() {
+        }
+
+        public int showMainMenu() throws IOException {
+            Console.writeLine("1. Log in as a manager");
+            Console.writeLine("0. Exit");
+            return Console.readInt();
+        }
+
+        public int showManagerMenu() throws IOException {
+            Console.writeLine("1. Company list");
+            Console.writeLine("2. Create a company");
+            Console.writeLine("0. Back");
+            return Console.readInt();
+        }
+
+        public Company showCompanyList(List<Company> list) throws IOException {
+            if (!list.isEmpty()) {
+                Console.writeLine("Choose the company:");
+                for (Company company : list) {
+                    Console.writeLine(company.getId() + ". " + company.getName());
+                }
+                Console.writeLine("0. Back");
+                int chosen = Console.readInt();
+                if (chosen == 0) {
+                    return null;
+                }
+
+                return list.get(chosen - 1);
+            } else {
+                Console.writeLine("The company list is empty!\n");
+                return null;
+            }
+        }
+
+        public void showCarList(List<Car> list) {
+            if (!list.isEmpty()) {
+                Console.writeLine("Car list:");
+                for (Car car : list) {
+                    Console.writeLine(car.getId() + ". " + car.getName());
+                }
+            } else {
+                Console.writeLine("The car list is empty!\n");
+            }
+        }
+
+        public int showCompanyMenu(String companyName) throws IOException {
+            Console.writeLine("'" + companyName + "'" + " company:");
+            Console.writeLine("1. Car list");
+            Console.writeLine("2. Create a car");
+            Console.writeLine("0. Back");
+            return Console.readInt();
+        }
+
+        public String showCreateDialog(String o) throws IOException {
+            Console.writeLine("Enter the " + o + " name:");
+            return Console.readLine();
+        }
+    }
+  learner_created: true
+- name: src/carsharing/old/utils/Console.java
+  visible: true
+  text: |
+    package carsharing.utils;
+
+    import java.io.BufferedReader;
+    import java.io.IOException;
+    import java.io.InputStreamReader;
+
+    public class Console {
+        private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        public static String readLine() throws IOException {
+            return br.readLine();
+        }
+
+        public static void writeLine(String line) {
+            System.out.println(line);
+        }
+
+        public static void write(String line) {
+            System.out.print(line);
+        }
+
+        public static int readInt() throws IOException {
+            return Integer.parseInt(br.readLine());
+        }
+    }
+  learner_created: true
+- name: src/carsharing/old/model/Car.java
+  visible: true
+  text: |-
+    package carsharing.model;
+
+    public class Car {
+
+        private int id;
+        private String name;
+        private int company_id;
+
+        public Car(int id, String name, int company_id) {
+            this.id = id;
+            this.name = name;
+            this.company_id = company_id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getCompany_id() {
+            return company_id;
+        }
+
+        public void setCompany_id(int company_id) {
+            this.company_id = company_id;
+        }
+    }
+  learner_created: true
+- name: src/carsharing/old/controller/Controller.java
+  visible: true
+  text: |
+    package carsharing.controller;
+
+    import carsharing.controller.menu_actions.Action;
+    import carsharing.controller.menu_actions.MenuState;
+    import carsharing.utils.Const;
+
+    import java.io.File;
+    import java.io.IOException;
+    import java.sql.Connection;
+    import java.sql.DriverManager;
+    import java.sql.SQLException;
+    import java.sql.Statement;
+
+    public class Controller {
+        private final String dbUrl;
+        private final Connection connection;
+        private boolean finished;
+
+        public Controller(String[] args) throws IOException, SQLException {
+            this.finished = false;
+            File dbFile = getDBFile(args);
+            dbUrl = Const.DB_URL + dbFile.getName();
+            createDatabase(dbFile);
+
+            connection = DriverManager.getConnection(dbUrl);
+        }
+
+        public void makeAction() throws IOException, SQLException {
+            Action action = Action.getAction();
+            if (Action.getState() == MenuState.TERMINATE) {
+                setFinished(true);
+            } else {
+                action.setConnection(connection);
+                action.execute();
+            }
+        }
+
+        private File getDBFile(String[] args) {
+            File dbFile = null;
+            if (args.length != 0) {
+                for (int i = 0; i < args.length; i++) {
+                    if ("-databaseFileName".equals(args[i]) && args[i + 1] != null) {
+                        dbFile = new File(Const.PATH + args[i + 1]);
+                        break;
+                    }
+                }
+            }
+
+            if (dbFile == null) {
+                dbFile = new File(Const.PATH + "database.mv.db");
+            }
+
+            return dbFile;
+        }
+
+        @SuppressWarnings("ResultOfMethodCallIgnored")
+        private void createDatabase(File dbFile) throws IOException {
+            new File(Const.PATH).mkdirs();
+            dbFile.createNewFile();
+
+            newDBCreateQuery();
+        }
+
+        private void newDBCreateQuery() {
+            try (Connection connection = DriverManager.getConnection(dbUrl);
+                 Statement statement = connection.createStatement()) {
+                Class.forName(Const.DRIVER);
+                connection.setAutoCommit(true);
+
+                statement.execute("DROP TABLE IF EXISTS car");
+                statement.execute("DROP TABLE IF EXISTS company");
+
+
+                statement.execute("CREATE TABLE IF NOT EXISTS company(" +
+                        "id INT PRIMARY KEY AUTO_INCREMENT," +
+                        "name VARCHAR(75) UNIQUE NOT NULL" +
+                        ");");
+
+                statement.execute("CREATE TABLE IF NOT EXISTS car(" +
+                        "id INT PRIMARY KEY AUTO_INCREMENT," +
+                        "name VARCHAR(75) UNIQUE NOT NULL," +
+                        "company_id INT NOT NULL," +
+                        "CONSTRAINT fk_company FOREIGN KEY (company_id)" +
+                        "REFERENCES company(id)" +
+                        ");");
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public boolean isFinished() {
+            return finished;
+        }
+
+        public void setFinished(boolean finished) {
+            this.finished = finished;
+        }
+    }
+  learner_created: true
+- name: src/carsharing/old/controller/menu_actions/Action.java
+  visible: true
+  text: |
+    package carsharing.controller.menu_actions;
+
+    import carsharing.view.View;
+
+    import java.io.IOException;
+    import java.sql.Connection;
+    import java.sql.SQLException;
+
+    public abstract class Action {
+
+        private static MenuState menuState = MenuState.MAIN;
+        private static final View view = new View();
+        private Connection connection;
+
+
+        public Action() {
+        }
+
+        public static Action getAction() {
+            MenuState state = getState();
+            return switch (state) {
+                case MAIN -> new MainMenu(view);
+                case MANAGER -> new ManagerMenu(view);
+                default -> null;
+            };
+        }
+
+        public static MenuState getState() {
+            return menuState;
+        }
+
+        static void setState(MenuState state) {
+            Action.menuState = state;
+        }
+
+        public abstract void execute() throws IOException;
+
+        public void setConnection(Connection connection) throws SQLException {
+            this.connection = connection;
+            this.connection.setAutoCommit(true);
+        }
+
+        public Connection getConnection() {
+            return connection;
+        }
+    }
+  learner_created: true
+- name: src/carsharing/old/controller/menu_actions/ManagerMenu.java
+  visible: true
+  text: |
+    package carsharing.controller.menu_actions;
+
+    import carsharing.model.Car;
+    import carsharing.model.Company;
+    import carsharing.utils.Console;
+    import carsharing.view.View;
+
+    import java.io.IOException;
+    import java.sql.ResultSet;
+    import java.sql.SQLException;
+    import java.sql.Statement;
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class ManagerMenu extends Action {
+
+        private final View view;
+
+        public ManagerMenu(View view) {
+            super();
+            this.view = view;
+        }
+
+        @Override
+        public void execute() {
+            try {
+                int action = view.showManagerMenu();
+                switch (action) {
+                    case 0 -> setState(MenuState.MAIN);
+                    case 1 -> companyList();
+                    case 2 -> createCompany();
+                }
+            } catch (IOException e) {
+                Console.writeLine("You should enter numbers.");
+            }
+        }
+
+        private void companyList() {
+            List<Company> list;
+            try (Statement statement = getConnection().createStatement()) {
+                String query = "SELECT * FROM company";
+                ResultSet result = statement.executeQuery(query);
+                list = convertCompanyResultSetToList(result);
+                Company chosenCompany = view.showCompanyList(list);
+                if (chosenCompany != null) {
+                    companyMenu(chosenCompany);
+                }
+
+            } catch (SQLException e) {
+                Console.writeLine("showCompanyList method. SQL Exception caught");
+                e.printStackTrace();
+            } catch (IOException e) {
+                Console.writeLine("showCompanyList method. IOException caught");
+                e.printStackTrace();
+                ;
+            }
+        }
+
+        private void companyMenu(Company company) {
+            try {
+                int action = view.showCompanyMenu(company.getName());
+                while (action > 0) {
+                    switch (action) {
+                        case 1 -> carList(company);
+                        case 2 -> createCar(company);
+                    }
+                    action = view.showCompanyMenu(company.getName());
+                }
+            } catch (IOException e) {
+                Console.writeLine("You should enter numbers.");
+            }
+        }
+
+        private List<Company> convertCompanyResultSetToList(ResultSet set) throws SQLException {
+            List<Company> list = new ArrayList<>();
+            while (set.next()) {
+                int id = set.getInt("id");
+                String name = set.getString("name");
+
+                Company company = new Company(id, name);
+                list.add(company);
+            }
+            return list;
+        }
+
+        private List<Car> convertCarResultSetToList(ResultSet set) throws SQLException {
+            List<Car> list = new ArrayList<>();
+            int counter = 1;
+            while (set.next()) {
+                int id = counter;
+                String name = set.getString("name");
+                int company_id = set.getInt("company_id");
+
+                Car car = new Car(id, name, company_id);
+                list.add(car);
+                counter++;
+            }
+            return list;
+        }
+
+        private void createCompany() throws IOException {
+            String newCompanyName = view.showCreateDialog("company");
+
+            try (Statement statement = getConnection().createStatement()) {
+                String query = "INSERT INTO company(name) VALUES ('" + newCompanyName + "');";
+
+                statement.execute(query);
+                Console.writeLine("The company was created!\n");
+            } catch (SQLException e) {
+                Console.writeLine("createCompany method. SQL Exception caught");
+                e.printStackTrace();
+            }
+        }
+
+        private void carList(Company company) {
+            List<Car> list;
+            try (Statement statement = getConnection().createStatement()) {
+                String query = "SELECT * FROM car WHERE company_id = " + company.getId() + ";";
+                ResultSet result = statement.executeQuery(query);
+                list = convertCarResultSetToList(result);
+                view.showCarList(list);
+
+            } catch (SQLException e) {
+                Console.writeLine("showCompanyList method. SQL Exception caught");
+                e.printStackTrace();
+            }
+        }
+
+        private void createCar(Company company) throws IOException {
+            String newCarName = view.showCreateDialog("car");
+            try (Statement statement = getConnection().createStatement()) {
+                String query = "INSERT INTO car(name, company_id) " +
+                        String.format("VALUES ('%s', %d);", newCarName, company.getId());
+
+                statement.execute(query);
+                Console.writeLine("The car was added!\n");
+            } catch (SQLException e) {
+                Console.writeLine("createCar method. SQL Exception caught");
+                e.printStackTrace();
+            }
+        }
+    }
+  learner_created: true
+- name: src/carsharing/CarSharing.java
+  visible: true
+  text: |
+    package carsharing;
+
+    import carsharing.controller.Controller;
+
+    import java.io.IOException;
+    import java.sql.SQLException;
+
+    public class CarSharing {
+        final Controller controller;
+
+        public CarSharing(String[] args) throws IOException, SQLException {
+            this.controller = new Controller(args);
+        }
+
+        public void run() throws IOException, SQLException {
+            while (!controller.isFinished()) {
+                controller.makeAction();
+            }
+        }
+    }
+  learner_created: true
+- name: src/carsharing/db/carsharing.trace.db
+  visible: true
+  learner_created: true
+- name: src/carsharing/controllers/DBController.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/controllers/CustomerController.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/controllers/ManagerController.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/controllers/Controller.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/controllers/Controlling.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/models/entities/Car.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/models/entities/Customer.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/models/entities/Entity.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/models/Manager.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/models/entities/Company.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/utility/Console.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/utility/Constants.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/view/View.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11504#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: "Fri, 18 Nov 2022 19:25:31 UTC"
 record: -1

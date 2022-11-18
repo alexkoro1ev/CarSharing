@@ -1,6 +1,6 @@
 package carsharing;
 
-import carsharing.controller.Controller;
+import carsharing.controllers.Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
